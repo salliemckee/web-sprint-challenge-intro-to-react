@@ -24,6 +24,14 @@ const StyledCharacter = styled.div`
   button {
     background-color: #abdbe3;
     border-radius: 5px;
+    &:hover {
+      transition: all 0.2s ease-in-out;
+      background-color: #eeeee4;
+    }
+  }
+  ul {
+    list-style-type: none;
+    text-align: left;
   }
 `;
 
@@ -32,7 +40,9 @@ const Character = ({ characterData }) => {
   return (
     <StyledCharacter className="characterCard">
       <h2>{characterData.name}</h2>
-      <button onClick={() => setShowCard(true)}>Info</button>
+      <button onClick={() => setShowCard(!showCard)}>
+        {showCard ? "Hide Info" : "Show Info"}
+      </button>
       {showCard && (
         <ul>
           <li>Born: {characterData.birth_year}</li>
@@ -47,10 +57,3 @@ const Character = ({ characterData }) => {
 };
 
 export default Character;
-
-// 0: {name: 'Luke Skywalker', height: '172', mass: '77', hair_color: 'blond', skin_color: 'fair', …}
-// 1: {name: 'C-3PO', height: '167', mass: '75', hair_color: 'n/a', skin_color: 'gold', …}
-// 2: {name: 'R2-D2', height: '96', mass: '32', hair_color: 'n/a', skin_color: 'white, blue', …}
-// 3: {name: 'Darth Vader', height: '202', mass: '136', hair_color: 'none', skin_color: 'white', …}
-// 4: {name: 'Leia Organa', height: '150', mass: '49', hair_color: 'brown', skin_color: 'light', …}
-// 5: {name: 'Owen Lars', height: '178', mass: '120', hair_color: 'brown, grey', skin_color: 'light', …}
